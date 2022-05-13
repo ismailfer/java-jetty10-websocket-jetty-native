@@ -11,7 +11,7 @@
 // ========================================================================
 //
 
-package org.eclipse.jetty.demo;
+package com.ismail.jetty;
 
 import java.net.URI;
 
@@ -19,6 +19,8 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.websocket.server.config.JettyWebSocketServletContainerInitializer;
+
+import com.ismail.jetty.ws.EventSocket;
 
 public class EventServer
 {

@@ -11,7 +11,7 @@
 // ========================================================================
 //
 
-package org.eclipse.jetty.demo;
+package com.ismail.jetty.ws;
 
 import java.util.Locale;
 import java.util.concurrent.CountDownLatch;

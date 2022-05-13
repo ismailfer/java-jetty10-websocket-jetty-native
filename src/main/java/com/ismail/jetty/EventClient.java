@@ -11,7 +11,7 @@
 // ========================================================================
 //
 
-package org.eclipse.jetty.demo;
+package com.ismail.jetty;
 
 import java.net.URI;
 import java.util.concurrent.Future;
@@ -19,21 +19,11 @@ import java.util.concurrent.Future;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.client.WebSocketClient;
 
+import com.ismail.jetty.ws.EventSocket;
+
 public class EventClient
 {
-    public static void main(String[] args)
-    {
-        EventClient client = new EventClient();
-        URI uri = URI.create("ws://localhost:8080/events/");
-        try
-        {
-            client.run(uri);
-        }
-        catch (Throwable t)
-        {
-            t.printStackTrace(System.err);
-        }
-    }
+
 
     public void run(URI uri) throws Exception
     {
@@ -42,10 +32,13 @@ public class EventClient
         try
         {
             client.start();
+            
             // The socket that receives events
             EventSocket socket = new EventSocket();
+            
             // Attempt Connect
             Future<Session> fut = client.connect(socket, uri);
+            
             // Wait for Connect
             Session session = fut.get();
 
@@ -64,6 +57,21 @@ public class EventClient
         finally
         {
             client.stop();
+        }
+    }
+    
+    public static void main(String[] args)
+    {
+        EventClient client = new EventClient();
+        
+        URI uri = URI.create("ws://localhost:8080/events/");
+        try
+        {
+            client.run(uri);
+        }
+        catch (Throwable t)
+        {
+            t.printStackTrace(System.err);
         }
     }
 }
